@@ -1,5 +1,5 @@
 <a href="https://github.com/NVIDIA/NemoClaw">
-     <img width="1500" height="801" alt="nemoclaw" src="https://github.com/user-attachments/assets/f46bfd83-a61d-4e8f-93ea-6d35d66b13da" />
+     <img width="1500" height="801" alt="nemoclaw" src="https://github.com/user-attachments/assets/38f0625e-b1a1-4c4e-88d9-663ea940a305" />
 </a>
 
 <br/>
