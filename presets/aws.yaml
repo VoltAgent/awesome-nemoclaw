@@ -1,4 +1,4 @@
-# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+# This is an example preset. Customize it for your own environment before use.
 
 preset:
   name: aws
