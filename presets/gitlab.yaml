@@ -1,0 +1,21 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: gitlab
+  description: "GitLab API access (least-privilege example)"
+
+network_policies:
+  gitlab:
+    name: gitlab
+    endpoints:
+      - host: gitlab.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/api/v4/**" }
+          - allow: { method: POST, path: "/api/v4/**" }
+          - allow: { method: PATCH, path: "/api/v4/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

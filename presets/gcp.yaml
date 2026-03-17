@@ -1,0 +1,35 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: gcp
+  description: "Google Cloud API access for OAuth, Cloud Storage, and Vertex AI (least-privilege example)"
+
+network_policies:
+  gcp:
+    name: gcp
+    endpoints:
+      - host: oauth2.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/token" }
+      - host: storage.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/storage/v1/b/your-bucket/**" }
+          - allow: { method: POST, path: "/upload/storage/v1/b/your-bucket/**" }
+      - host: aiplatform.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/v1/**" }
+          - allow: { method: GET, path: "/v1/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

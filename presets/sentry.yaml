@@ -1,0 +1,27 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: sentry
+  description: "Sentry API and ingestion access (least-privilege example)"
+
+network_policies:
+  sentry:
+    name: sentry
+    endpoints:
+      - host: sentry.io
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/api/0/**" }
+          - allow: { method: POST, path: "/api/0/**" }
+      - host: "o0.ingest.sentry.io"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/api/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

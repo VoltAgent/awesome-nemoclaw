@@ -1,0 +1,28 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: zendesk
+  description: "Zendesk API access (least-privilege example)"
+
+network_policies:
+  zendesk:
+    name: zendesk
+    endpoints:
+      - host: "your-subdomain.zendesk.com"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/api/v2/**" }
+          - allow: { method: POST, path: "/api/v2/**" }
+          - allow: { method: PATCH, path: "/api/v2/**" }
+      - host: "your-subdomain.zendeskusercontent.com"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/api/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

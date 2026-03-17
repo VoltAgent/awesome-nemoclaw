@@ -1,0 +1,19 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: linear
+  description: "Linear GraphQL API access (least-privilege example)"
+
+network_policies:
+  linear:
+    name: linear
+    endpoints:
+      - host: api.linear.app
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/graphql" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

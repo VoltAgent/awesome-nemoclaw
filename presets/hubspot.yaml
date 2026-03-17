@@ -1,0 +1,23 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: hubspot
+  description: "HubSpot CRM API access (least-privilege example)"
+
+network_policies:
+  hubspot:
+    name: hubspot
+    endpoints:
+      - host: api.hubapi.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/crm/**" }
+          - allow: { method: POST, path: "/crm/**" }
+          - allow: { method: PATCH, path: "/crm/**" }
+          - allow: { method: GET, path: "/oauth/**" }
+          - allow: { method: POST, path: "/oauth/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

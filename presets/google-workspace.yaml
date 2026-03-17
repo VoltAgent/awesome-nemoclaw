@@ -1,0 +1,47 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: google-workspace
+  description: "Google Workspace API access (least-privilege example)"
+
+network_policies:
+  google_workspace:
+    name: google_workspace
+    endpoints:
+      - host: oauth2.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/token" }
+          - allow: { method: POST, path: "/revoke" }
+      - host: gmail.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/gmail/v1/**" }
+          - allow: { method: POST, path: "/gmail/v1/**" }
+          - allow: { method: PATCH, path: "/gmail/v1/**" }
+      - host: drive.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/drive/v3/**" }
+          - allow: { method: POST, path: "/drive/v3/**" }
+          - allow: { method: PATCH, path: "/drive/v3/**" }
+      - host: calendar.googleapis.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/calendar/v3/**" }
+          - allow: { method: POST, path: "/calendar/v3/**" }
+          - allow: { method: PATCH, path: "/calendar/v3/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

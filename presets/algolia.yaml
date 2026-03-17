@@ -1,0 +1,28 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: algolia
+  description: "Algolia Search API access (least-privilege example)"
+
+network_policies:
+  algolia:
+    name: algolia
+    endpoints:
+      - host: "your-app-id.algolia.net"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/1/indexes/**" }
+          - allow: { method: GET, path: "/1/indexes/**" }
+          - allow: { method: PUT, path: "/1/indexes/**" }
+      - host: "your-app-id-dsn.algolia.net"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/1/indexes/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

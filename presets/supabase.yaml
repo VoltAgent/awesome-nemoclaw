@@ -1,0 +1,25 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: supabase
+  description: "Supabase API access (least-privilege example)"
+
+network_policies:
+  supabase:
+    name: supabase
+    endpoints:
+      - host: "your-project.supabase.co"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/rest/v1/**" }
+          - allow: { method: POST, path: "/rest/v1/**" }
+          - allow: { method: PATCH, path: "/rest/v1/**" }
+          - allow: { method: POST, path: "/auth/v1/**" }
+          - allow: { method: GET, path: "/storage/v1/**" }
+          - allow: { method: POST, path: "/storage/v1/**" }
+          - allow: { method: PATCH, path: "/storage/v1/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

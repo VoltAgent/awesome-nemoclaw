@@ -1,0 +1,21 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: vercel
+  description: "Vercel API access (least-privilege example)"
+
+network_policies:
+  vercel:
+    name: vercel
+    endpoints:
+      - host: api.vercel.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/v2/**" }
+          - allow: { method: POST, path: "/v2/**" }
+          - allow: { method: PATCH, path: "/v2/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

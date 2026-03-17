@@ -1,0 +1,34 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: aws
+  description: "AWS API access for STS, S3, and Bedrock (least-privilege example)"
+
+network_policies:
+  aws:
+    name: aws
+    endpoints:
+      - host: sts.amazonaws.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/" }
+      - host: s3.amazonaws.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/your-bucket/**" }
+          - allow: { method: PUT, path: "/your-bucket/**" }
+      - host: bedrock-runtime.us-east-1.amazonaws.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/model/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

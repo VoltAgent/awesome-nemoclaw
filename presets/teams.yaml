@@ -1,0 +1,29 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: teams
+  description: "Microsoft Teams and Graph API access (least-privilege example)"
+
+network_policies:
+  teams:
+    name: teams
+    endpoints:
+      - host: graph.microsoft.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/v1.0/**" }
+          - allow: { method: POST, path: "/v1.0/**" }
+          - allow: { method: PATCH, path: "/v1.0/**" }
+      - host: login.microsoftonline.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/common/oauth2/**" }
+          - allow: { method: POST, path: "/common/oauth2/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

@@ -1,0 +1,21 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: airtable
+  description: "Airtable API access (least-privilege example)"
+
+network_policies:
+  airtable:
+    name: airtable
+    endpoints:
+      - host: api.airtable.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/v0/**" }
+          - allow: { method: POST, path: "/v0/**" }
+          - allow: { method: PATCH, path: "/v0/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }

@@ -1,0 +1,37 @@
+# Bu preset örnek amaçlıdır. Kullanmadan önce kendi ortamınıza göre düzenleyin.
+
+preset:
+  name: confluence
+  description: "Confluence and Atlassian API access (least-privilege example)"
+
+network_policies:
+  confluence:
+    name: confluence
+    endpoints:
+      - host: "your-domain.atlassian.net"
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/wiki/api/**" }
+          - allow: { method: POST, path: "/wiki/api/**" }
+          - allow: { method: PUT, path: "/wiki/api/**" }
+      - host: api.atlassian.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/ex/**" }
+          - allow: { method: POST, path: "/ex/**" }
+      - host: auth.atlassian.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/oauth/**" }
+          - allow: { method: POST, path: "/oauth/**" }
+    binaries:
+      - { path: /usr/local/bin/openclaw }
