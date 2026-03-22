@@ -113,6 +113,7 @@ Important:
 - **[`algolia`](./presets/algolia.yaml)** - Algolia indexing and search API endpoints.
 - **[`airtable`](./presets/airtable.yaml)** - Airtable API access via `/v0/**`.
 - **[`hubspot`](./presets/hubspot.yaml)** - HubSpot CRM and OAuth API access.
+- **[`spraay`](./presets/spraay.yaml)** - Spraay x402 crypto payment gateway — batch payments, escrow, payroll, and robot hiring (RTP) across 13 blockchains via USDC micropayments.
 
 Policy authoring references:
 

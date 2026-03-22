@@ -1,0 +1,32 @@
+# spraay.yaml — Spraay x402 crypto payment gateway
+# Enables agents to execute batch payments, escrow, payroll, swaps,
+# and robot hiring (RTP) across 13 blockchains via USDC micropayments.
+#
+# Docs: https://docs.spraay.app
+# MCP Server: https://smithery.ai/server/@plagtech/spraay-x402-mcp
+
+network:
+  egress:
+    - host: gateway.spraay.app
+      port: 443
+      methods: [GET, POST]
+      paths: ["/v1/**", "/health"]
+      note: "Spraay x402 payment gateway — 76+ endpoints"
+
+    - host: docs.spraay.app
+      port: 443
+      methods: [GET]
+      paths: ["/**"]
+      note: "Spraay API documentation"
+
+    - host: "*.base.org"
+      port: 443
+      methods: [POST]
+      paths: ["/**"]
+      note: "Base chain RPC for payment verification"
+
+    - host: "*.coinbase.com"
+      port: 443
+      methods: [POST]
+      paths: ["/**"]
+      note: "Coinbase CDP — x402 payment facilitation"
