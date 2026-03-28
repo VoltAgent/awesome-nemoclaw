@@ -1,0 +1,31 @@
+# SidClaw — Agent governance API (policy evaluation, approval, audit)
+# https://sidclaw.com
+#
+# Allows the sandbox to reach the SidClaw API for governance checks.
+# Use with @sidclaw/sdk/nemoclaw or sidclaw.middleware.nemoclaw.
+#
+# For self-hosted SidClaw, replace api.sidclaw.com with your hostname.
+
+preset:
+  name: sidclaw
+  description: "SidClaw agent governance — policy evaluation, human approval, audit trails"
+
+network_policies:
+  sidclaw:
+    name: sidclaw
+    endpoints:
+      - host: api.sidclaw.com
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: POST, path: "/api/v1/evaluate" }
+          - allow: { method: GET, path: "/api/v1/approvals/**" }
+          - allow: { method: POST, path: "/api/v1/approvals/*/approve" }
+          - allow: { method: POST, path: "/api/v1/approvals/*/deny" }
+          - allow: { method: POST, path: "/api/v1/traces/*/outcome" }
+          - allow: { method: GET, path: "/api/v1/agents/**" }
+    binaries:
+      - { path: /usr/local/bin/node }
+      - { path: /usr/bin/python3 }
