@@ -113,6 +113,7 @@ Important:
 - **[`algolia`](./presets/algolia.yaml)** - Algolia indexing and search API endpoints.
 - **[`airtable`](./presets/airtable.yaml)** - Airtable API access via `/v0/**`.
 - **[`hubspot`](./presets/hubspot.yaml)** - HubSpot CRM and OAuth API access.
+- **[`sidclaw`](./presets/sidclaw.yaml)** - SidClaw agent governance API access.
 
 Policy authoring references:
 
@@ -145,6 +146,7 @@ Task-oriented setups combining policy, routing, and operations.
 ### Example Projects
 
 - **[NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)** - Canonical implementation.
+- **[sidclawhq/platform](https://github.com/sidclawhq/platform/tree/main/examples/nemoclaw-governed)** - Agent governance inside NemoClaw sandboxes.
 - **[Add your project](https://github.com/necatiozmen/awesome-nemoclaw/pulls)** - Share production-ready setups.
 
 
