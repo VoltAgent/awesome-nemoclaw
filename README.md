@@ -142,6 +142,12 @@ Task-oriented setups combining policy, routing, and operations.
 - **[Service bootstrap script](https://github.com/NVIDIA/NemoClaw/blob/main/scripts/start-services.sh)** - Telegram and tunnel services.
 - **[Remote bootstrap script](https://github.com/NVIDIA/NemoClaw/blob/main/scripts/brev-setup.sh)** - Remote host bootstrap.
 
+### Skills & IDE Integrations
+
+AI assistant skills that encode NemoClaw operational knowledge.
+
+- **[nemoclaw-skill](https://github.com/Koneisto/nemoclaw-skill)** - Claude Code skill with 12 critical rules, automated workspace recovery (watchdog pattern for [#486](https://github.com/NVIDIA/NemoClaw/issues/486)), Signal bridge production hardening, multi-sandbox guidance. Also usable as plain Markdown context for any LLM.
+
 ### Example Projects
 
 - **[NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)** - Canonical implementation.
